@@ -1,0 +1,20 @@
+sudo: required
+language: python
+python: "2.7"
+services:
+  - docker
+env:
+  global:
+    - PATH="/usr/bin:$PATH"
+
+before_install:
+  - deactivate
+  - sudo apt-get update -qq
+
+install:
+  - sudo apt-get install sshpass
+  - pip install docker-py
+  - pip install ansible
+
+script:
+  - cd test && make
