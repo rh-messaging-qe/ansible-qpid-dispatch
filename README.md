@@ -7,7 +7,7 @@
 
 Install and configure qpid-dispatch.
 
-## Features
+## Features
 * Supports CentOS and RHEL servers.
 
 ## Requirements
@@ -16,7 +16,7 @@ There is no requirements, just Ansible.
 ## Tests
 For testing we use the [provision_docker](https://github.com/chrismeyersfsu/provision_docker) playbook.
 
-###How to run tests
+### How to run tests
 ```bash
 $ cd test && make all
 ```
