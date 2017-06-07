@@ -1,0 +1,5 @@
+---
+__dispatch_packages:
+  - qpid-dispatch-router
+  - qpid-dispatch-tools
+  - qpid-dispatch-docs

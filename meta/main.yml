@@ -4,7 +4,6 @@ galaxy_info:
   description: Qpid Dispatch for RHEL/CentOS
   company: RedHat
   license: license (Apache 2)
-  min_ansible_version: 1.2
   platforms:
     - name: EL
       versions:

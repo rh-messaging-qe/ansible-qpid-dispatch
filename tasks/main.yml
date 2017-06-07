@@ -1,0 +1,6 @@
+---
+# Variable configuration
+- include: variables.yml
+
+# Setup Qpid Dispatch
+- include: setup.yml
