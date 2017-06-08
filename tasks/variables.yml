@@ -1,13 +1,18 @@
 ---
 # Variable configuration
-- name: Include OS-specific variables.
+- name: Include OS-specific variables
   include_vars: "{{ item }}"
   with_first_found:
     - files:
       - "vars/{{ ansible_os_family }}.yml"
       skip: true
 
-- name: Define dispatch_packages.
+- name: Define dispatch_packages
   set_fact:
     dispatch_packages: "{{ __dispatch_packages | list }}"
   when: dispatch_packages is not defined
+
+- name: Define dispatch_daemon
+  set_fact:
+    dispatch_daemon: "{{ __dispatch_daemon }}"
+  when: dispatch_daemon is not defined

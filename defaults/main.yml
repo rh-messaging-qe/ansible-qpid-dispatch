@@ -1,0 +1,8 @@
+---
+#dispatch_packages:
+#  - qpid-dispatch
+#  - qpid-dispatch-tools
+#  - qpid-dispatch-docs
+dispatch_daemon: qdrouterd
+dispatch_config_path: "/etc/qpid-dispatch/qdrouterd.conf"
+dispatch_default_port: 5672
