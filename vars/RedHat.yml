@@ -15,6 +15,6 @@ __dispatch_packages:
   # Sources from rawhide 8.x
   - 'http://mirror.vutbr.cz/fedora/development/rawhide/Everything/{{ ansible_architecture }}/os/Packages/q/qpid-dispatch-router-0.8.0-1.fc27.{{ ansible_architecture }}.rpm'
   - 'http://mirror.vutbr.cz/fedora/development/rawhide/Everything/{{ ansible_architecture }}/os/Packages/q/qpid-dispatch-tools-0.8.0-1.fc27.{{ ansible_architecture }}.rpm'
-  - 'http://mirror.vutbr.cz/fedora/development/rawhide/Everything/{{ ansible_architecture }}/os/Packages/q/qpid-dispatch-docs-0.8.0-1.fc27.{{ ansible_architecture }}.rpm'
+  - 'http://mirror.vutbr.cz/fedora/development/rawhide/Everything/{{ ansible_architecture }}/os/Packages/q/qpid-dispatch-docs-0.8.0-1.fc27.noarch.rpm'
 
 __qpid_dispatch_daemon: qdrouterd
