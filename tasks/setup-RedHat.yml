@@ -1,4 +1,10 @@
 ---
+- name: Ensure libwebsockets packages are installed
+  yum:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ libwebsockets_package }}"
+
 - name: Ensure Qpid Proton packages are installed
   yum:
     name: "{{ item }}"
