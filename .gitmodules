@@ -1,3 +1,0 @@
-[submodule "test/roles/provision_docker"]
-	path = test/roles/provision_docker
-	url = https://github.com/chrismeyersfsu/provision_docker.git
