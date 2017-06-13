@@ -2,7 +2,7 @@
 repository: 'http://mirror.vutbr.cz/fedora/development/rawhide/Everything/{{ ansible_architecture }}/os/Packages'
 
 __libwebsockets_package:
- - '{{ repository }}/l/libwebsockets-2.2.1-1.fc27.{{ ansible_architecture }}.rpm'
+ - libwebsockets
 
 __proton_packages:
   # Old packages
