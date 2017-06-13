@@ -4,7 +4,7 @@
   vars:
     inventory:
       - name: docker_r1
-        image: "centos"
+        image: "centos:centos7"
   roles:
     - role: provision_docker
       provision_docker_inventory: "{{ inventory }}"
@@ -13,6 +13,3 @@
   hosts: docker_containers
   roles:
     - role: ansible-qpid-dispatch
-  tasks:
-  - name: Test
-    command: 'echo "Hello world"'
