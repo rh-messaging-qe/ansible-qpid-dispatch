@@ -1,25 +1,14 @@
 ---
-repository: 'http://mirror.vutbr.cz/fedora/development/rawhide/Everything/{{ ansible_architecture }}/os/Packages'
-
 __libwebsockets_package:
  - libwebsockets
 
 __proton_packages:
-  # Old packages
-  #- qpid-proton-c
-  #- python-qpid-proton
-  - '{{ repository }}/q/qpid-proton-c-0.17.0-2.fc27.{{ ansible_architecture }}.rpm'
-  - '{{ repository }}/p/python-qpid-proton-0.17.0-2.fc27.{{ ansible_architecture }}.rpm'
+  - qpid-proton-c
+  - python-qpid-proton
 
 __dispatch_packages:
-  # Old packages 7.x
-  #- qpid-dispatch-router
-  #- qpid-dispatch-tools
-  #- qpid-dispatch-docs
-
-  # Sources from rawhide 8.x
-  - '{{ repository }}/q/qpid-dispatch-router-0.8.0-1.fc27.{{ ansible_architecture }}.rpm'
-  - '{{ repository }}/q/qpid-dispatch-tools-0.8.0-1.fc27.{{ ansible_architecture }}.rpm'
-  - '{{ repository }}/q/qpid-dispatch-docs-0.8.0-1.fc27.noarch.rpm'
+  - qpid-dispatch-router
+  - qpid-dispatch-tools
+  - qpid-dispatch-docs
 
 __qpid_dispatch_daemon: qdrouterd
