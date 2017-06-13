@@ -7,6 +7,11 @@
       - "vars/{{ ansible_os_family }}.yml"
       skip: true
 
+- name: Define proton_packages
+  set_fact:
+    proton_packages: "{{ __proton_packages | list }}"
+  when: proton_packages is not defined
+
 - name: Define dispatch_packages
   set_fact:
     dispatch_packages: "{{ __dispatch_packages | list }}"

@@ -1,7 +1,20 @@
 ---
+__proton_packages:
+  # Old packages
+  #- qpid-proton-c
+  #- python-qpid-proton
+  - http://mirror.vutbr.cz/fedora/development/rawhide/Everything/$basearch/os/Packages/q/qpid-proton-c-0.17.0-2.fc27.$basearch.rpm
+  - http://mirror.vutbr.cz/fedora/development/rawhide/Everything/$basearch/os/Packages/p/python-qpid-proton-0.17.0-2.fc27.$basearch.rpm
+
 __dispatch_packages:
-  - qpid-dispatch-router
-  - qpid-dispatch-tools
-  - qpid-dispatch-docs
+  # Old packages 7.x
+  #- qpid-dispatch-router
+  #- qpid-dispatch-tools
+  #- qpid-dispatch-docs
+
+  # Sources from rawhide 8.x
+  - http://mirror.vutbr.cz/fedora/development/rawhide/Everything/$basearch/os/Packages/q/qpid-dispatch-router-0.8.0-1.fc27.$basearch.rpm
+  - http://mirror.vutbr.cz/fedora/development/rawhide/Everything/$basearch/os/Packages/q/qpid-dispatch-tools-0.8.0-1.fc27.$basearch.rpm
+  - http://mirror.vutbr.cz/fedora/development/rawhide/Everything/$basearch/os/Packages/q/qpid-dispatch-docs-0.8.0-1.fc27.noarch.rpm
 
 __qpid_dispatch_daemon: qdrouterd

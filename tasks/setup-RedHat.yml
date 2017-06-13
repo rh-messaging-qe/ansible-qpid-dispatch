@@ -1,4 +1,10 @@
 ---
+- name: Ensure Qpid Proton packages are installed
+  yum:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ proton_packages }}"
+
 - name: Ensure Qpid Dispatch packages are installed
   yum:
     name: "{{ item }}"
