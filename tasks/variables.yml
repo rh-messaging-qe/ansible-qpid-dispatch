@@ -1,21 +1,16 @@
 ---
 # Variable configuration
-- name: Include OS-specific variables
+- name: Include OS-specific variables.
   include_vars: "{{ item }}"
   with_first_found:
     - files:
       - "vars/{{ ansible_os_family }}.yml"
       skip: true
+  when: ansible_os_family != "RedHat"
 
-- name: Define libwebsockets_package
-  set_fact:
-    libwebsockets_package: "{{ __libwebsockets_package | list }}"
-  when: libwebsockets_package is not defined
-
-- name: Define proton_packages
-  set_fact:
-    proton_packages: "{{ __proton_packages | list }}"
-  when: proton_packages is not defined
+- name: Include OS-specific variables (RedHat).
+  include_vars: "{{ ansible_os_family }}-{{ ansible_distribution_major_version }}.yml"
+  when: ansible_os_family == "RedHat"
 
 - name: Define dispatch_packages
   set_fact:
