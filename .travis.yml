@@ -26,4 +26,4 @@ install:
   - ansible-galaxy install -r test/requirements.yml -p test/roles/
 
 script:
-  cd test && make
+  cd test && make all
