@@ -1,10 +1,10 @@
 ---
-- name: qdrouterd is stared
+- name: qdrouterd is started
   service:
     name: "{{ dispatch_daemon }}"
     state: started
 
-- name: qdrouterd is restared
+- name: qdrouterd is restarted
   service:
     name: "{{ dispatch_daemon }}"
     state: restarted
