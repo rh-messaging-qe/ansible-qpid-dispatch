@@ -4,3 +4,6 @@
     name: "{{ item }}"
     state: latest
   with_items: "{{ dispatch_packages }}"
+  notify:
+    - qdrouterd is enabled
+    - qdrouterd is started

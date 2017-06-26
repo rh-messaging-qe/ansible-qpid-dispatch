@@ -1,11 +1,8 @@
 ---
 __dispatch_packages:
-  #CentOS7 EPEL is needed
-  - libwebsockets
-  - qpid-proton-c
-  - python-qpid-proton
   - qpid-dispatch-router
   - qpid-dispatch-tools
   - qpid-dispatch-docs
+  - cyrus-sasl
 
 __qpid_dispatch_daemon: qdrouterd
