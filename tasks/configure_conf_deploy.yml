@@ -1,0 +1,7 @@
+---
+- name: be sure than qdrouterd is configured
+  copy:
+    src: "{{ conf_file_path }}"
+    dest: "{{ dispatch_config_path }}"
+  notify:
+    - qdrouterd is restarted

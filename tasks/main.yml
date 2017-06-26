@@ -4,3 +4,6 @@
 
 # Setup Qpid Dispatch
 - include: setup.yml
+
+# Configure Qpid Dispatch
+- include: configure.yml
