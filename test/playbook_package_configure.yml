@@ -4,7 +4,7 @@
   vars:
     inventory:
       - name: docker_r1
-        image: "centos:centos7"
+        image: "enkeys/centos7-sshd-service"
   roles:
     - role: provision_docker
       provision_docker_inventory: "{{ inventory }}"
