@@ -14,13 +14,13 @@ Install and configure qpid-dispatch.
 * Supports CentOS 7 and RHEL 7 servers. (CentOS 6 and RHEL 6 don't have solved dependencies for libwebsockets)
 
 ## Requirements
-There is no requirements, just Ansible and supported system.
+Epel on CentOS or added repos for qpid-dispatch on RHEL.
 
 ## Tests
 For testing we use the [provision_docker](https://github.com/chrismeyersfsu/provision_docker) playbook.
 
 ### Requirements
-* dokcer_host (by default on localhost)
+* docker_host (by default on localhost)
 
 ### How to run tests
 ```bash

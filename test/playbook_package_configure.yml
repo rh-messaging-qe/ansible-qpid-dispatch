@@ -5,6 +5,8 @@
     inventory:
       - name: docker_r1
         image: "rhmessagingqe/sshd-service:centos7"
+      - name: docker_r2
+        image: "rhmessagingqe/sshd-service:centos6"
   roles:
     - role: provision_docker
       provision_docker_inventory: "{{ inventory }}"
