@@ -1,7 +1,7 @@
 # Qpid Dispatch - Ansible playbook
-[![Build Status](https://travis-ci.org/enkeys/ansible-qpid-dispatch.svg?branch=master)](https://travis-ci.org/enkeys/ansible-qpid-dispatch)
-[![GitHub Issues](https://img.shields.io/github/issues/enkeys/ansible-qpid-dispatch.svg)](https://github.com/enkeys/ansible-qpid-dispatch/issues)
-[![GitHub Issues](https://img.shields.io/github/issues-pr/enkeys/ansible-qpid-dispatch.svg)](https://github.com/enkeys/ansible-qpid-dispatch/pulls)
+[![Build Status](https://travis-ci.org/rh-messaging-qe/ansible-qpid-dispatch.svg?branch=master)](https://travis-ci.org/rh-messaging-qe/ansible-qpid-dispatch)
+[![GitHub Issues](https://img.shields.io/github/issues/rh-messaging-qe/ansible-qpid-dispatch.svg)](https://github.com/rh-messaging-qe/ansible-qpid-dispatch/issues)
+[![GitHub Issues](https://img.shields.io/github/issues-pr/rh-messaging-qe/ansible-qpid-dispatch.svg)](https://github.com/rh-messaging-qe/ansible-qpid-dispatch/pulls)
 ![Contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
