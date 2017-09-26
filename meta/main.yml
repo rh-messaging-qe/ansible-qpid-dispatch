@@ -9,4 +9,6 @@ galaxy_info:
       versions:
       - 6
       - 7
-dependencies: []
+dependencies:
+  - src: https://github.com/msgqe/ansible-epel.git
+    name: ansible-epel

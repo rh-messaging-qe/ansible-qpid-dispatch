@@ -14,7 +14,7 @@
 - name:
   hosts: docker_containers
   roles:
-    - role: repo-epel
+    - role: ansible-epel
 
 - name:
   hosts: docker_containers

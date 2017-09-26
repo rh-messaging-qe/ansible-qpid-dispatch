@@ -14,9 +14,4 @@
 - name:
   hosts: docker_containers
   roles:
-    - role: repo-epel
-
-- name:
-  hosts: docker_containers
-  roles:
     - role: ansible-qpid-dispatch

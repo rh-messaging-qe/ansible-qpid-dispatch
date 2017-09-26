@@ -3,6 +3,7 @@
   yum:
     name: "{{ item }}"
     state: latest
+    enablerepo: epel
   with_items: "{{ dispatch_packages }}"
   notify:
     - qdrouterd is enabled
