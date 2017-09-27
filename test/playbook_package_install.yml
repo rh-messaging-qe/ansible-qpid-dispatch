@@ -13,5 +13,7 @@
 
 - name:
   hosts: docker_containers
+  vars:
+    dispatch_package_source_epel: true
   roles:
     - role: ansible-qpid-dispatch

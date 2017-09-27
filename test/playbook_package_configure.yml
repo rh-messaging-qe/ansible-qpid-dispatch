@@ -13,12 +13,15 @@
 
 - name:
   hosts: docker_containers
+  vars:
+    dispatch_package_source_epel: true
   roles:
     - role: ansible-epel
 
 - name:
   hosts: docker_containers
+  vars:
+    dispatch_package_source_epel: true
+    conf_file_path: 'files/qdrouterd.conf'
   roles:
     - role: ansible-qpid-dispatch
-  vars:
-    - conf_file_path: 'files/qdrouterd.conf'
