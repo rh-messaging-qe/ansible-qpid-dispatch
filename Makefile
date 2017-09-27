@@ -15,12 +15,7 @@ test-prepare: clean
 	ansible-galaxy install -f -r test/requirements.yml
 	printf '[defaults]\nroles_path=./build:../\n' >ansible.cfg
 
-package_install:
+test: test-prepare
+	ansible-playbook $(ANSIBLE_OPTS) -i $(TEST_INVENTORY) test/test.yml
+	rm -rf ansible.cfg ./build
 	docker rm -f $(containers) || true
-	ansible-playbook $(ANSIBLE_OPTS) -i $(TEST_INVENTORY) test/playbook_package_install.yml
-
-package_configure:
-	docker rm -f $(containers) || true
-	ansible-playbook $(ANSIBLE_OPTS) -i $(TEST_INVENTORY) test/playbook_package_configure.yml
-
-test: test-prepare package_install package_configure
