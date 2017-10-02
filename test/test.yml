@@ -1,27 +1,84 @@
+# Copyright 2017 Red Hat, Inc. and/or its affiliates
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 ---
 - name: Bring up docker containers
   hosts: localhost
   vars:
     inventory:
-      - name: docker_r1
+      - name: alain
         image: "rhmessagingqe/sshd-service:centos7"
-      - name: docker_r2
-        image: "rhmessagingqe/sshd-service:centos6"
+      - name: roland
+        image: "rhmessagingqe/sshd-service:centos7"
   roles:
     - role: provision_docker
       provision_docker_inventory: "{{ inventory }}"
 
-- name:
+- name: Install qpid-dispatch
   hosts: docker_containers
   vars:
     dispatch_package_source_epel: true
   roles:
     - role: ansible-epel
 
-- name:
+- name: Install qpid-dispatch with basic config
   hosts: docker_containers
   vars:
     dispatch_package_source_epel: true
     conf_file_path: 'files/qdrouterd.conf'
   roles:
     - role: ansible-qpid-dispatch
+
+- name: Install qpid-dispatch with templates generator
+  hosts: docker_containers
+  vars:
+    dispatch_package_source_epel: true
+    dispatch_template_generator: true
+  roles:
+    - role: pip
+    - role: ansible-qpid-dispatch
+
+- name: Install qpid-dispatch with templates generator and config routers
+  hosts: docker_containers
+  vars:
+    dispatch_package_source_epel: true
+    dispatch_template_generator: true
+    dispatch_test: true
+    generate_congfigs: true
+    router_vars: files/vars/routers_vars.yml
+  pre_tasks:
+    - include_vars:
+        file: "{{ router_vars }}"
+  roles:
+    - role: pip
+    - role: ansible-qpid-dispatch
+
+##########################DIFF of generated files#######################################
+- name: Check generated configs
+  hosts: docker_containers
+  tasks:
+    - fetch:
+        src: "/etc/qpid-dispatch/qdrouterd.conf"
+        dest: "/tmp/qdrouterd-{{ inventory_hostname }}.conf"
+        flat: yes
+        fail_on_missing: yes
+
+- name: Compare generated files
+  hosts: localhost
+  tasks:
+    - name: Diff files
+      command: diff -wB /tmp/qdrouterd-{{ item }}.conf files/ref_out/qdrouterd-{{ item }}.conf
+      register: diff_files
+      with_items:
+        - roland
+        - alain

@@ -1,5 +1,11 @@
+# Provision docker for testing
 - src: chrismeyersfsu.provision_docker
   name: provision_docker
 
+# Epel
 - src: https://github.com/msgqe/ansible-epel.git
   name: ansible-epel
+
+# Pip
+- src: https://github.com/bobbyrenwick/ansible-pip.git
+  name: pip

@@ -1,0 +1,4 @@
+localhost ansible_connection=local
+
+alain ansible_connection=local
+roland ansible_connection=local

@@ -12,19 +12,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 ---
-# Variable configuration
-- include_tasks: variables.yml
+- name: Ensure that dir for routers config file exists
+  file:
+    path: "{{ template_dir }}"
+    state: directory
+    mode: 0755
 
-# Configure Qpid Dispatch
-- include_tasks: setup.yml
+- name: Create template on remote hosts
+  command: "qdrouterJinja2 -o {{ template_file_path_remote }}"
 
-# Setup Qpid Dispatch
-- include_tasks: configure.yml
+- name: Fetch jinja2 template from remote hosts
+  fetch:
+    src: "{{ template_file_path_remote }}"
+    dest: "{{ template_file_path_local }}"
+    flat: yes
+    fail_on_missing: yes
 
-# Include generating configs and deployment
-- include_tasks: generate_template.yml
-  when: generate_congfigs is defined and generate_congfigs == true
-
-# Include generating configs and deployment
-- include_tasks: deploy_configs.yml
-  when: generate_congfigs is defined and generate_congfigs == true
+- name: Clear jinja2 template from remote hosts
+  file:
+    path: "{{ template_file_path_remote }}"
+    state: absent

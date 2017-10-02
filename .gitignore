@@ -1,3 +1,4 @@
 build
 *.retry
 ansible.cfg
+test/local-test.yml

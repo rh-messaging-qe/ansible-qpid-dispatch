@@ -7,3 +7,27 @@ dispatch_daemon: qdrouterd
 dispatch_config_path: "/etc/qpid-dispatch/qdrouterd.conf"
 dispatch_default_port: 5672
 dispatch_package_source_epel: false
+dispatch_template_generator: false
+
+router_daemon_implementation: qpid-dispatch
+
+generate_congfigs: false
+
+# name of template generator name
+template_generator: qdrouter-jinja2
+
+# template paths
+template_dir: "/tmp/templates"
+template_file_path_remote: "/tmp/templates/{{ template_file }}"
+template_file_path_local: "/tmp/templates/{{ template_file }}"
+template_file: "qdrouterd-{{ inventory_hostname }}.conf.j2"
+
+# final config paths
+config_file_path: "/etc/{{ router_daemon_implementation }}/{{ config_file }}"
+config_file: "qdrouterd.conf"
+
+# input variables path
+variable_file_remote: "/tmp/vars-{{ inventory_hostname }}.yml"
+variable_file: "vars/vars-{{ inventory_hostname }}.yml"
+
+generated_router_vars: /tmp/router_vars.yml

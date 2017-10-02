@@ -1,4 +1,11 @@
 ---
-- include: setup-RedHat.yml
+- include_tasks:
+    setup-RedHat.yml
   when: ansible_os_family == 'RedHat'
   static: no
+
+- name: Ensure Qpid Dispatch template generator is installed
+  when: dispatch_template_generator is defined and dispatch_template_generator == true
+  pip:
+    name: "{{ template_generator }}"
+    state: latest

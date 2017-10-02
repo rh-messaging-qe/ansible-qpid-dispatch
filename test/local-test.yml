@@ -1,0 +1,206 @@
+---
+# DELETE after fix
+############################################################################
+- name: Include Variables
+  hosts: all
+  tasks:
+    - include_vars:
+        file: "files/vars/routers_vars.yml"
+
+# - name: Create router config file from template
+  # hosts: all
+  # tasks:
+  #   - name: Merge vars defined
+  #     set_fact:
+  #       # test_vars: "{{ {'connector': {'host':'1.1.1.1'}} | combine({'connector': [{'pepa':'1.1.1.21'}]}, recursive=True) }}"
+  #       test_vars: "{{ item | combine(variables, recursive=True) }}"
+  #     with_items: "{{ confs }}"
+  #     when: item.machine == inventory_hostname and variables is defined and variables.machine == inventory_hostname
+  #
+  #   - debug:
+  #       msg="{{ item }}"
+  #     with_items: "{{ confs }}"
+  #     when: item.machine == inventory_hostname
+  #
+  #   - debug:
+  #       msg="{{ variables }}"
+  #     when: variables.machine == inventory_hostname
+  #
+  #   - debug:
+  #       msg="{{ test_vars }}"
+  #
+  #
+  #   - name: Merge vars undefined
+  #     set_fact:
+  #       test_vars: "{{ confs }}"
+  #     when: variables is undefined
+  #
+  #   - template:
+  #       src: "files/templates/qdrouterd-{{ inventory_hostname }}.conf.j2"
+  #       dest: "/tmp/qdrouterd-{{ inventory_hostname }}.conf"
+  #       owner: root
+  #       group: root
+  #       mode: 0755
+  #     with_items:
+  #       - "{{ test_vars }}"
+  #     when: item.machine == inventory_hostname
+
+
+- name: Combine dictionary of lists
+  hosts: alain
+  tasks:
+    - name: Loop over the dictionary
+      set_fact:
+        bla: "{{ item.value }}"
+        test: "{{ item.value }} + {{ variables.connector}}"
+        # test2: "{{ test }} + {{ variables.connector}}"
+
+      # debug: msg="Key={{ item.key }} value={{ item.value }} add={{ variables.connector }}"
+      with_dict: "{{ confs[0] }}"
+      when:  variables is defined
+
+    - name: Set connectors
+      set_fact:
+        connector: "{'connector':{{ item.connector + variables.connector }} }"
+      with_items:
+        - "{{ confs }}"
+      when: variables is defined and item.machine == inventory_hostname
+
+    - name: Set listeners
+      set_fact:
+        listener: "{'listener':{{ item.listenner + variables.listenner }} }"
+      with_items:
+        - "{{ confs }}"
+      when: variables is defined and item.machine == inventory_hostname and variables.listener is defined
+
+    - name: Set connectors
+      set_fact:
+        linkRoute: "{'linkRoute':{{ item.linkRoute + variables.linkRoute }} }"
+      with_items:
+        - "{{ confs }}"
+      when: variables is defined and item.machine == inventory_hostname and variables.linkRoute is defined
+
+    - name: Set connectors
+      set_fact:
+        router: "{'router':{{ variables.router }} }"
+      with_items:
+        - "{{ confs }}"
+      when: variables is defined and item.machine == inventory_hostname and variables.router is defined
+
+
+    - name: Combine variables
+      set_fact:
+        tmp_config: "{{ router|default({}) | combine( connector | default({}), listener | default({}), linkRoute | default({}) ) }}"
+        # full_config: "{{ confs | combine( connector | default({}), listener | default({}), linkRoute | default({}) ) }}"
+
+    - debug: msg="{{ confs + [variables] }}"
+
+
+
+    - name: Merge vars defined
+      set_fact:
+        # test_vars: "{{ {'connector': {'host':'1.1.1.1'}} | combine({'connector': [{'pepa':'1.1.1.21'}]}, recursive=True) }}"
+        test_vars: "{{ confs + [variables] }}"
+      with_items: "{{ confs }}"
+      when: item.machine == inventory_hostname and variables is defined and variables.machine == inventory_hostname
+
+    - debug:
+        msg="{{ test_vars }}"
+# A co udelat python script, ktery ten append udela a v ansiblu ho pustit?!!!!!!!!!!!!
+
+    - name: Merge vars undefined
+      set_fact:
+        test_vars: "{{ confs }}"
+      when: variables is undefined
+
+    - template:
+        src: "files/templates/qdrouterd-{{ inventory_hostname }}.conf.j2"
+        dest: "/tmp/qdrouterd-{{ inventory_hostname }}.conf"
+        owner: root
+        group: root
+        mode: 0755
+      with_items:
+        - "{{ test_vars }}"
+      when: item.machine == inventory_hostname
+
+    # - name: Merge lists
+    #   set_fact:
+    #     test: |
+    #       {% set res = [] -%}
+    #       {% for key in war_files.keys() -%}
+    #          {% for value in war_files[key] -%}
+    #           {% set ignored = res.extend([{'component': key, 'data':value}]) -%}
+    #          {%- endfor %}
+    #       {%- endfor %}
+    #       {{ res }}
+    #
+    # - name: let's debug the crap out of this
+    #   debug: var=war_files_list_of_dicts
+    #
+    # - name: Servers and their WARs!!!
+    #  debug:
+    #     msg: "component={{ item.component }}, data={{ item.data }}"
+    #  with_items: "{{ variables }}"
+
+# - name: Create router config file from template
+#   hosts: all
+#   tasks:
+#     - name: Merge vars defined
+#       set_fact:
+#         test_vars: "{{ {'router':[{'id':'test','mode':'test2'}]} | combine({'router':[{'area':'test3'}]}, recursive=True) }}"
+#
+#     # - debug:
+#     #     msg="{{ item }}"
+#     #   with_items: "{{ confs }}"
+#     #   when: item.machine == inventory_hostname
+#     #
+#     # - debug:
+#     #     msg="{{ variables }}"
+#     #   when: variables.machine == inventory_hostname
+#
+#     - debug:
+#         msg="{{ test_vars }}"
+#
+#
+#     - name: Merge vars undefined
+#       set_fact:
+#         test_vars: "{{ confs }}"
+#       when: variables is undefined
+#
+#     - template:
+#         src: "files/templates/qdrouterd-{{ inventory_hostname }}.conf.j2"
+#         dest: "/tmp/qdrouterd-{{ inventory_hostname }}.conf"
+#         owner: root
+#         group: root
+#         mode: 0755
+#       with_items:
+#         - "{{ test_vars }}"
+#       when: item.machine == inventory_hostname
+
+
+- name: Compare generated files
+  hosts: localhost
+  tasks:
+# ############################################################################
+    - name: Print generated file
+      command: cat /tmp/qdrouterd-alain.conf
+      register: first_file
+
+    - debug: msg="{{ first_file.stdout }}"
+
+    # - debug:
+    #     msg="{{ provision_docker_ip['results'][0]['item']['vars'] }}"
+
+    - name: Print ref file
+      command: cat files/ref_out/qdrouterd-alain.conf
+      register: second_file
+
+    - debug: msg="{{ second_file.stdout }}"
+# ############################################################################
+#
+    - name: Diff files
+      command: diff -wB /tmp/qdrouterd-{{ item }}.conf files/ref_out/qdrouterd-{{ item }}.conf
+      register: diff_files
+      with_items:
+        # - roland # TODO uncomment
+        - alain

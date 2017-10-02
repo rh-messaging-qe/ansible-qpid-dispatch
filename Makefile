@@ -2,7 +2,7 @@
 TEST_INVENTORY?=test/inventory
 ANSIBLE_OPTS?=
 
-containers = docker_r1 docker_r2 docker_r3 docker_r4 docker_r5
+containers = alain roland
 
 all: package_install package_configure
 
@@ -11,9 +11,9 @@ clean:
 	docker rm -f $(containers) || true
 
 test-prepare: clean
-	printf '[defaults]\nroles_path=./build/\n' >ansible.cfg
+	printf '[defaults]\nroles_path=./build/\n' > ansible.cfg
 	ansible-galaxy install -f -r test/requirements.yml
-	printf '[defaults]\nroles_path=./build:../\n' >ansible.cfg
+	printf '[defaults]\nroles_path=./build:../\n' > ansible.cfg
 
 test: test-prepare
 	ansible-playbook $(ANSIBLE_OPTS) -i $(TEST_INVENTORY) test/test.yml
