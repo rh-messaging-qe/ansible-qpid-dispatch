@@ -23,8 +23,8 @@
 
 # Include generating configs and deployment
 - include_tasks: generate_template.yml
-  when: generate_congfigs is defined and generate_congfigs == true
+  when: dispatch_generate_congfigs is defined and dispatch_generate_congfigs == true
 
 # Include generating configs and deployment
 - include_tasks: deploy_configs.yml
-  when: generate_congfigs is defined and generate_congfigs == true
+  when: dispatch_generate_congfigs is defined and dispatch_generate_congfigs == true

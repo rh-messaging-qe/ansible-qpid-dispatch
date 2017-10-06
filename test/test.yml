@@ -54,7 +54,7 @@
     dispatch_package_source_epel: true
     dispatch_template_generator: true
     dispatch_test: true
-    generate_congfigs: true
+    dispatch_generate_congfigs: true
     router_vars: files/vars/routers_vars.yml
   pre_tasks:
     - include_vars:

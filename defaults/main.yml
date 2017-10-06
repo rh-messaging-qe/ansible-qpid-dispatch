@@ -3,15 +3,15 @@
 #  - qpid-dispatch
 #  - qpid-dispatch-tools
 #  - qpid-dispatch-docs
+dispatch_package_source_epel: false
+dispatch_template_generator: false
+dispatch_generate_congfigs: false
+
 dispatch_daemon: qdrouterd
 dispatch_config_path: "/etc/qpid-dispatch/qdrouterd.conf"
 dispatch_default_port: 5672
-dispatch_package_source_epel: false
-dispatch_template_generator: false
 
 router_daemon_implementation: qpid-dispatch
-
-generate_congfigs: false
 
 # name of template generator name
 template_generator: qdrouter-jinja2
