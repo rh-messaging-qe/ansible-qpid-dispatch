@@ -4,6 +4,7 @@
 #  - qpid-dispatch-tools
 #  - qpid-dispatch-docs
 dispatch_package_source_epel: false
+dispatch_package_pip: false
 dispatch_template_generator: false
 dispatch_generate_congfigs: false
 

@@ -44,14 +44,15 @@
   vars:
     dispatch_package_source_epel: true
     dispatch_template_generator: true
+    dispatch_package_pip: true
   roles:
-    - role: pip
     - role: ansible-qpid-dispatch
 
 - name: Install qpid-dispatch with templates generator and config routers
   hosts: docker_containers
   vars:
     dispatch_package_source_epel: true
+    dispatch_package_pip: true
     dispatch_template_generator: true
     dispatch_test: true
     dispatch_generate_congfigs: true
@@ -60,7 +61,6 @@
     - include_vars:
         file: "{{ router_vars }}"
   roles:
-    - role: pip
     - role: ansible-qpid-dispatch
 
 ##########################DIFF of generated files#######################################

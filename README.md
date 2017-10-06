@@ -25,6 +25,7 @@ Variables controlling what will be executed by the role.
 | Name              | Default Value       | Description          |
 |-------------------|---------------------|----------------------|
 | `dispatch_package_source_epel` | false | Install qpid-dispatch from epel source. |
+| `dispatch_package_pip` | false | Install pip for qdrouter-jinja2 generator.. |
 | `dispatch_template_generator` | false | Install qdrouter-jinja2 template generator on router nodes. |
 | `dispatch_dispatch_generate_congfigs` | false | Generate config files for oruter nodes from templates. |
 
@@ -61,14 +62,35 @@ Variables controlling the creation of a broker instance.
 Dependencies
 ------------
 
-A `dispatch_package_source_epel` must be true when you don't have subscription for dispatch repository.
-Pip (TODO)
+A `dispatch_package_source_epel` must be set to `true` when you don't have subscription for dispatch repository.
+A `dispatch_package_pip` must be set to `true` when you don't have installed pip and you want to install and use [qdrouter-jinja2](https://github.com/rh-messaging-qe/qdrouterd-jinja2) generator..
 
 Inventory and user's variables
 ------------
 
-TODO
+You can use two types of config files for generate final config:
 
+- Generated config file (example: `test/vars/router_vars.yml`) is file, gnerated by [iqa-topology-generator](https://github.com/rh-messaging-qe/iqa-topology-generator). This file includes all components generated from network (graph) type as defaults and also all components from graph specification for iqa-topology-generator
+
+- Hostfile in inventory folder (example: `test/inventory/hosts.yml`) contains structure with router nodes and their specific variables for each host or group of hosts. You can more specify router configs by this file, but every record will overwrite generated components of same type (connectors from host.yml will erase conectors from router_vars.yml).
+
+Example of host file:
+
+	- all:
+	    hosts:
+	      router_name:
+	         variables:
+	            machine: router_name
+	            router:
+	             - id: router_name
+	               mode: standalone
+	            connector:
+	             - host: 6.6.6.6
+	               port: 4567
+	            listener:
+    	         - host: 0.0.0.0
+    	           role: inter-router
+                   port: 6000
 
 Example Playbook
 ----------------
@@ -78,12 +100,12 @@ Including an example of how to use your role (for instance, with variables passe
     - hosts: docker_containers
       vars:
         dispatch_package_source_epel: true
+        dispatch_package_pip: true
         dispatch_template_generator: true
         dispatch_test: true
         dispatch_generate_congfigs: true
         router_vars: files/vars/routers_vars.yml
       roles:
-        - role: pip
         - role: ansible-qpid-dispatch
 
 

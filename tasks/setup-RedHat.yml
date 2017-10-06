@@ -33,3 +33,7 @@
   notify:
     - qdrouterd is enabled
     - qdrouterd is started
+
+# - name: Ensure pip is installed
+#   when: dispatch_package_pip is defined and dispatch_package_pip == true
+#   TODO
