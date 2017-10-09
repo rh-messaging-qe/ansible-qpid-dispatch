@@ -87,10 +87,6 @@ Example of host file:
 	            connector:
 	             - host: 6.6.6.6
 	               port: 4567
-	            listener:
-    	         - host: 0.0.0.0
-    	           role: inter-router
-                   port: 6000
 
 Example Playbook
 ----------------
