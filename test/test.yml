@@ -43,8 +43,8 @@
   hosts: docker_containers
   vars:
     dispatch_package_source_epel: true
-    dispatch_template_generator: true
     dispatch_package_pip: true
+    dispatch_skip_template_generator: false
   roles:
     - role: ansible-qpid-dispatch
 
@@ -53,9 +53,11 @@
   vars:
     dispatch_package_source_epel: true
     dispatch_package_pip: true
-    dispatch_template_generator: true
-    dispatch_test: true
-    dispatch_generate_congfigs: true
+    dispatch_skip_install: true
+    dispatch_skip_config_default: true    
+    dispatch_skip_template_generator: false
+    dispatch_skip_generate_template: false
+    dispatch_skip_generate_congfigs: false
     router_vars: files/vars/routers_vars.yml
   pre_tasks:
     - include_vars:

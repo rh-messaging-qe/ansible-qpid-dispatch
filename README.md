@@ -24,10 +24,13 @@ Variables controlling what will be executed by the role.
 
 | Name              | Default Value       | Description          |
 |-------------------|---------------------|----------------------|
-| `dispatch_package_source_epel` | false | Install qpid-dispatch from epel source. |
-| `dispatch_package_pip` | false | Install pip for qdrouter-jinja2 generator.. |
-| `dispatch_template_generator` | false | Install qdrouter-jinja2 template generator on router nodes. |
-| `dispatch_dispatch_generate_congfigs` | false | Generate config files for oruter nodes from templates. |
+| `dispatch_skip_install` | false | Skip install qpid-dispatch. |
+| `dispatch_skip_config_default` | false | Skip default config qpid-dispatch. |
+| `dispatch_skip_template_generator` | true | Skip install qdrouter-jinja2 template generator on router nodes. |
+| `dispatch_skip_generate_template` | true | Skip of generate templates. |
+| `dispatch_skip_generate_congfigs` | true | Skip of generate config files for router nodes from templates. |
+| `dispatch_package_source_epel` | false | Install qpid-dispatch from Epel source. |
+| `dispatch_package_pip` | false | Install pip for qdrouter-jinja2 generator. |
 
 
 Role Variables: Daemon Variables.

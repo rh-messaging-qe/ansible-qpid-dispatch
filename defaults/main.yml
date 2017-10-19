@@ -5,8 +5,11 @@
 #  - qpid-dispatch-docs
 dispatch_package_source_epel: false
 dispatch_package_pip: false
-dispatch_template_generator: false
-dispatch_generate_congfigs: false
+dispatch_skip_install: false
+dispatch_skip_config_default: false
+dispatch_skip_template_generator: true
+dispatch_skip_generate_template: true
+dispatch_skip_generate_congfigs: true
 
 dispatch_daemon: qdrouterd
 dispatch_config_path: "/etc/qpid-dispatch/qdrouterd.conf"
