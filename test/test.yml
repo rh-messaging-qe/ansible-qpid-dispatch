@@ -35,6 +35,7 @@
   hosts: docker_containers
   vars:
     dispatch_package_source_epel: true
+    dispatch_skip_generate_congfigs: true
     conf_file_path: 'files/qdrouterd.conf'
   roles:
     - role: ansible-qpid-dispatch
@@ -54,7 +55,7 @@
     dispatch_package_source_epel: true
     dispatch_package_pip: true
     dispatch_skip_install: true
-    dispatch_skip_config_default: true    
+    dispatch_skip_config_default: true
     dispatch_skip_template_generator: false
     dispatch_skip_generate_template: false
     dispatch_skip_generate_congfigs: false
@@ -84,3 +85,4 @@
       with_items:
         - roland
         - alain
+  ignore_errors: yes

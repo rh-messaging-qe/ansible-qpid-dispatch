@@ -13,19 +13,19 @@
 # limitations under the License.
 ---
 # Variable configuration
-- include_tasks: variables.yml
+- include: variables.yml
 
 # Configure Qpid Dispatch
-- include_tasks: setup.yml
+- include: setup.yml
 
 # Setup Qpid Dispatch
-- include_tasks: configure.yml
+- include: configure.yml
   when: dispatch_skip_config_default is defined and dispatch_skip_config_default == false
 
 # Include generating configs and deployment
-- include_tasks: generate_template.yml
+- include: generate_template.yml
   when: dispatch_skip_generate_template is defined and dispatch_skip_generate_template == false
 
 # Include generating configs and deployment
-- include_tasks: deploy_configs.yml
+- include: deploy_configs.yml
   when: dispatch_skip_generate_congfigs is defined and dispatch_skip_generate_congfigs == false

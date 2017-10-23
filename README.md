@@ -66,7 +66,9 @@ Dependencies
 ------------
 
 A `dispatch_package_source_epel` must be set to `true` when you don't have subscription for dispatch repository.
-A `dispatch_package_pip` must be set to `true` when you don't have installed pip and you want to install and use [qdrouter-jinja2](https://github.com/rh-messaging-qe/qdrouterd-jinja2) generator..
+A `dispatch_package_pip` must be set to `true` when you don't have installed pip and you want to install and use [qdrouter-jinja2](https://github.com/rh-messaging-qe/qdrouterd-jinja2) generator.
+
+Minimum Ansible version: 2.3.2.0
 
 Inventory and user's variables
 ------------

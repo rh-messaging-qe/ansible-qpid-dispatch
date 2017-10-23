@@ -20,12 +20,12 @@
   set_fact:
     conf_vars: "{{ item | combine(variables, recursive=True) }}"
   with_items: "{{ confs }}"
-  when: item.machine == inventory_hostname and variables is defined and variables.machine == inventory_hostname
+  when: item.machine == inventory_hostname and variables is defined and variables.machine == inventory_hostname and confs is defined
 
 - name: Merge vars (undefined)
   set_fact:
     conf_vars: "{{ confs }}"
-  when: variables is undefined
+  when: variables is undefined and confs is defined
 
 - name: Create router config file from template
   template:

@@ -1,5 +1,5 @@
 .PHONY: package_install clean
-TEST_INVENTORY?=test/inventory
+TEST_INVENTORY?=test/inventory/inventory
 ANSIBLE_OPTS?=
 
 containers = alain roland
