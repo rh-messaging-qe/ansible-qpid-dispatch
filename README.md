@@ -100,9 +100,9 @@ Including an example of how to use your role (for instance, with variables passe
       vars:
         dispatch_package_source_epel: true
         dispatch_package_pip: true
-        dispatch_template_generator: true
-        dispatch_test: true
-        dispatch_generate_congfigs: true
+        dispatch_skip_template_generator: true
+        dispatch_skip_generate_template: true
+        dispatch_skip_generate_congfigs: true
         router_vars: files/vars/routers_vars.yml
       roles:
         - role: ansible-qpid-dispatch
