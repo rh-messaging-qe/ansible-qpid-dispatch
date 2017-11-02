@@ -18,7 +18,8 @@ dispatch_default_port: 5672
 router_daemon_implementation: qpid-dispatch
 
 # name of template generator name
-template_generator: qdrouter-jinja2
+template_generator_install: qdrouter-jinja2
+template_generator_use: qdrouterjinja2
 
 # template paths
 template_dir: "/tmp/templates"

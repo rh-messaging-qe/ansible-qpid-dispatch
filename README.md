@@ -53,7 +53,8 @@ Variables controlling the creation of a broker instance.
 
 | Name              | Default Value       | Description          |
 |-------------------|---------------------|----------------------|
-| `template_generator` | qdrouter-jinja2 | Template generator package name |
+| `template_generator_install` | qdrouter-jinja2 | Template generator install package name |
+| `template_generator_use` | qdrouterjinja2 | Template generator use package name |
 | `template_dir` | '/tmp/templates' | Path to dir for templates |
 | `template_file_path_remote` | /tmp/templates/{{ template_file }} | Path to template on remote machine |
 | `template_file_path_local` | /tmp/templates/{{ template_file }} | Path to template on local machine |
