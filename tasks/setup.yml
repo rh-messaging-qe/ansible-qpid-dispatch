@@ -6,5 +6,5 @@
 - name: Ensure Qpid Dispatch template generator is installed
   when: dispatch_skip_template_generator is defined and dispatch_skip_template_generator == false
   pip:
-    name: "{{ template_generator }}"
+    name: "{{ template_generator_install }}"
     state: latest

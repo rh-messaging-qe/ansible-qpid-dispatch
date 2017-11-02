@@ -19,7 +19,7 @@
     mode: 0755
 
 - name: Create template on remote hosts
-  command: "qdrouterJinja2 -o {{ template_file_path_remote }}"
+  command: "{{ template_generator_use }} -o {{ template_file_path_remote }}"
 
 - name: Fetch jinja2 template from remote hosts
   fetch:

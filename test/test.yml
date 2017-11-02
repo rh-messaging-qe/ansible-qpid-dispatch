@@ -19,7 +19,7 @@
       - name: alain
         image: "rhmessagingqe/sshd-service:centos7"
       - name: roland
-        image: "rhmessagingqe/sshd-service:centos7"
+        image: "rhmessagingqe/sshd-service:centos6"
   roles:
     - role: provision_docker
       provision_docker_inventory: "{{ inventory }}"
