@@ -13,6 +13,6 @@ dependencies:
   - src: https://github.com/msgqe/ansible-epel.git
     name: ansible-epel
 
-  - src: https://github.com/bobbyrenwick/ansible-pip.git
+  - src: https://github.com/rh-messaging-qe/ansible-pip.git
     name: pip
     when: dispatch_package_pip is defined and dispatch_package_pip == true
