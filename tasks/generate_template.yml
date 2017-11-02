@@ -19,7 +19,17 @@
     mode: 0755
 
 - name: Create template on remote hosts
-  command: "qdrouterJinja2 -o {{ template_file_path_remote }}"
+  vars:
+    jinja_template_generator: qdrouterJinja2
+  command: "{{ jinja_template_generator }} -o {{ template_file_path_remote }}"
+  when: ansible_os_family == "RedHat" and ansible_distribution_major_version == "7"
+
+- name: Create template on remote hosts
+  vars:
+    jinja_template_generator: qdrouterjinja2
+  command: "{{ jinja_template_generator }} -o {{ template_file_path_remote }}"
+  when: ansible_os_family == "RedHat" and ansible_distribution_major_version == "6"  
+
 
 - name: Fetch jinja2 template from remote hosts
   fetch:
