@@ -3,7 +3,7 @@
 #  - qpid-dispatch
 #  - qpid-dispatch-tools
 #  - qpid-dispatch-docs
-dispatch_package_source_epel: false
+
 dispatch_package_pip: false
 dispatch_skip_install: false
 dispatch_skip_config_default: false

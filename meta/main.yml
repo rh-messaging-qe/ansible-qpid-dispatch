@@ -10,10 +10,6 @@ galaxy_info:
       - 6
       - 7
 dependencies:
-  - src: https://github.com/msgqe/ansible-epel.git
-    name: ansible-epel
-    when: dispatch_package_source_epel is defined and dispatch_package_source_epel == true
-
   - src: https://github.com/rh-messaging-qe/ansible-pip.git
     name: pip
     when: dispatch_package_pip is defined and dispatch_package_pip == true

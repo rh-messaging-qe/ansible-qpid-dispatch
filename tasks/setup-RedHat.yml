@@ -12,18 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 ---
-- name: Ensure Qpid Dispatch packages are installed (from EPEL)
-  when: dispatch_package_source_epel is defined and dispatch_package_source_epel == true
-  yum:
-    name: "{{ item }}"
-    state: latest
-    enablerepo: epel
-  with_items: "{{ dispatch_packages }}"
-  notify:
-    - qdrouterd is enabled
-    - qdrouterd is started
-
-
 - name: Ensure Qpid Dispatch packages are installed (from default)
   when: dispatch_package_source_epel is defined and dispatch_package_source_epel == false
   yum:
