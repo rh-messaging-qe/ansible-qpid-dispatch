@@ -23,8 +23,8 @@ template_generator_use: qdrouterjinja2
 
 # template paths
 template_dir: "/tmp/templates"
-template_file_path_remote: "/tmp/templates/{{ template_file }}"
-template_file_path_local: "/tmp/templates/{{ template_file }}"
+template_file_path_remote: "{{ template_dir }}/{{ template_file }}"
+template_file_path_local: "{{ template_dir }}/{{ template_file }}"
 template_file: "qdrouterd-{{ inventory_hostname }}.conf.j2"
 
 # final config paths
