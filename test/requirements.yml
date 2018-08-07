@@ -1,10 +1,12 @@
 # Provision docker for testing
-- src: chrismeyersfsu.provision_docker
+- src: https://github.com/chrismeyersfsu/provision_docker.git
   name: provision_docker
+  version: d68ce0aa486eff7669011ee2f9eaf68b95184ce1
 
 # Epel
-- src: https://github.com/msgqe/ansible-epel.git
-  name: ansible-epel
+- src: https://github.com/geerlingguy/ansible-role-repo-epel.git
+  name: epel
+  version: f050bc3380f6e532c75af080356f0978afc57b58
 
 # Pip
 - src: https://github.com/rh-messaging-qe/ansible-pip.git
