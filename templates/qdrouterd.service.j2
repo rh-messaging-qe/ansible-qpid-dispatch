@@ -1,0 +1,13 @@
+[Unit]
+Description=Qpid Dispatch router daemon
+Requires=network.target
+After=network.target
+
+[Service]
+User=qdrouterd
+Group=qdrouterd
+Type=simple
+ExecStart=/usr/sbin/qdrouterd -c {{qdrouterd_config_path}}
+
+[Install]
+WantedBy=multi-user.target
