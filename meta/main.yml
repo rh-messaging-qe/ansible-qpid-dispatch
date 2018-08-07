@@ -1,6 +1,6 @@
 ---
 galaxy_info:
-  author: Dominik Lenoch <dlenoch@redhat.com>
+  author: Dominik Lenoch <dlenoch@redhat.com>, Jakub Stejskal <jstejska@redhat.com>
   description: Qpid Dispatch for RHEL/CentOS
   company: RedHat
   license: license (Apache 2)
@@ -9,7 +9,8 @@ galaxy_info:
       versions:
       - 6
       - 7
+
+# Pip
 dependencies:
   - src: https://github.com/rh-messaging-qe/ansible-pip.git
     name: pip
-    when: dispatch_package_pip is defined and dispatch_package_pip == true

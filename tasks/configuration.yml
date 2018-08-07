@@ -12,13 +12,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 ---
-- name: Variable configuration
-  include: variables.yml
+- name : Iclude play to generated jinja2 template and fetched back to localhost
+  include: generate_template.yml
+  when: 
+    - not dispatch_skip_generate_template
+  tags: template
 
-- name: Package setup
-  include: setup.yml
-  when: not dispatch_skip_setup
+- name: Basic configuration files
+  include: configuration_deploy.yml
+  notify:
+    - qdrouterd is restarted
+  when: 
+    - not dispatch_skip_configuration
+  tags: config_files
 
-- name: Configuration
-  include: configuration.yml
-  when: not dispatch_skip_configuration
+- name : Configuration based on jinja2 templates
+  include: configuration_template.yml
+  when: 
+    - dispatch_use_template
+  tags: config_template

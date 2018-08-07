@@ -13,11 +13,20 @@
 # limitations under the License.
 ---
 - name: Ensure Qpid Dispatch packages are installed (from default)
-  when: dispatch_package_source_epel is defined and dispatch_package_source_epel == false
   yum:
-    name: "{{ item }}"
+    name: "{{ line_item }}"
     state: latest
   with_items: "{{ dispatch_packages }}"
+  loop_control:
+    loop_var: line_item
+
+- name: Create Unit file
+  template: 
+    src: templates/qdrouterd.service.j2 
+    dest: "/lib/systemd/system/{{ dispatch_service_name }}.service"
+    mode: 644
   notify:
-    - qdrouterd is enabled
-    - qdrouterd is started
+    - systemctl is reloaded
+  when: 
+    - not dispatch_skip_service_create
+    - not dispatch_skip_service

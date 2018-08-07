@@ -1,15 +1,23 @@
 ---
 - name: qdrouterd is started
   service:
-    name: "{{ dispatch_daemon }}"
+    name: "{{ dispatch_service_name }}"
     state: started
 
 - name: qdrouterd is restarted
   service:
-    name: "{{ dispatch_daemon }}"
+    name: "{{ dispatch_service_name }}"
     state: restarted
 
 - name: qdrouterd is enabled
   service:
-    name: "{{ dispatch_daemon }}"
-    enabled: yes
+    name: "{{ dispatch_service_name }}"
+    enabled: "{{ dispatch_service_enabled }}"
+
+# TODO: RHEL6 initd support
+- name: systemctl is reloaded
+  command: systemctl daemon-reload
+  when: 
+    - "{{ ansible_os_family }} == RHEL"
+    - "{{ ansible_distribution_major_version}} == 7"
+

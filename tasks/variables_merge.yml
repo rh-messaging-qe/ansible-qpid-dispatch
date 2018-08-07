@@ -12,7 +12,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 ---
-- include: configure_conf_deploy.yml
-  when: conf_file_path is defined
-  notify:
-    - qdrouterd is restarted
+- name: Include Variables
+  include_vars:
+    file: "{{ router_vars }}"
+    name: dispatch_file_vars
+
+- name: Merge vars (defined)
+  set_fact:
+    confs: "{{ item | combine(variables, recursive=True) }}"
+  with_items: "{{ dispatch_file_vars.confs }}"
+  when: item.machine == inventory_hostname and variables is defined and variables.machine == inventory_hostname and dispatch_file_vars.confs is defined
+
+- name: Merge vars (undefined)
+  set_fact:
+    confs: "{{ dispatch_file_vars.confs }}"
+  when: variables is undefined and dispatch_file_vars.confs is defined

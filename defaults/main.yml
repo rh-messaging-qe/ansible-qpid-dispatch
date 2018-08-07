@@ -1,38 +1,62 @@
 ---
-#dispatch_packages:
-#  - qpid-dispatch
-#  - qpid-dispatch-tools
-#  - qpid-dispatch-docs
+dispatch_skip_setup: no
+# Use standard qdrouterd.conf configuration
+dispatch_skip_configuration: no
 
-dispatch_package_pip: false
-dispatch_skip_install: false
-dispatch_skip_config_default: false
-dispatch_skip_template_generator: true
-dispatch_skip_generate_template: true
-dispatch_skip_generate_congfigs: true
-
-dispatch_daemon: qdrouterd
 dispatch_config_path: "/etc/qpid-dispatch/qdrouterd.conf"
-dispatch_default_port: 5672
+dispatch_config_path_local: "" # qdrouterd.conf
 
-router_daemon_implementation: qpid-dispatch
+# SASL
+dispatch_skip_sasl: yes
+dispatch_config_sasl2_path: "/etc/sasl2/qdrouterd.conf "
+dispatch_config_sasl2_path_local: "" # qdrouterd.conf
 
-# name of template generator name
-template_generator_install: qdrouter-jinja2
-template_generator_use: qdrouterjinja2
+dispatch_config_sasldb_path: "/var/lib/qdrouterd/qdrouterd.sasldb"
+dispatch_config_sasldb_path_local: "" # qdrouterd.sasldb
 
-# template paths
-template_dir: "/tmp/templates"
-template_file_path_remote: "{{ template_dir }}/{{ template_file }}"
-template_file_path_local: "{{ template_dir }}/{{ template_file }}"
-template_file: "qdrouterd-{{ inventory_hostname }}.conf.j2"
+# SASL Template configuration
+dispatch_sasl_pwcheck_method: auxprop
+dispatch_sasl_auxprop_plugin: sasldb
+dispatch_sasl_sasldb_path: "{{ dispatch_config_sasldb_path }}"
+dispatch_sasl_mech_list: 
+  - ANONYMOUS
+  - DIGEST-MD5
+  - EXTERNAL
+  - PLAIN
+dispatch_sasl_sql_select: dummy select
 
+# Disaptch service
+dispatch_skip_service: no
+dispatch_service_name: "qdrouterd"
+dispatch_skip_service_create: yes
+
+dispatch_service_enabled: yes
+
+#
+# EXPERIMENTAL: EXTRA FEATURES
+
+# qdrouterd.conf template
+dispatch_use_template: no # done
+dispatch_use_default_template: yes # TODO
+
+dispatch_skip_generate: yes
+dispatch_skip_generate_template: yes
+
+
+# TODO: More routers on one node
+dispatch_router_name: "FirstOne"
+router_daemon_implementation: "qdrouterd-{{ dispatch_router_name }}"
+
+# Template generator paths
+template_dir: /tmp/qdrouter_template
+template_file_path_remote: "{{ template_dir }}/qdrouterd-{{ inventory_hostname }}.conf.j2"
+template_file_path_local: "/tmp/qdrouterd-{{ inventory_hostname }}.conf.j2"
+template_file_path_default: "templates/qdrouterd.conf.j2"
 # final config paths
-config_file_path: "/etc/{{ router_daemon_implementation }}/{{ config_file }}"
-config_file: "qdrouterd.conf"
-
-# input variables path
-variable_file_remote: "/tmp/vars-{{ inventory_hostname }}.yml"
-variable_file: "vars/vars-{{ inventory_hostname }}.yml"
-
+generate_config_file_path: "{{ dispatch_config_path }}"
 generated_router_vars: /tmp/router_vars.yml
+
+# DEPRECATED
+# input variables path
+variable_file: "vars/vars-{{ inventory_hostname }}.yml"
+variable_file_remote: "/tmp/vars-{{ inventory_hostname }}.yml"

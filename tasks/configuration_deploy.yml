@@ -12,13 +12,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 ---
-- name: Variable configuration
-  include: variables.yml
+- name: Deploy qdrouterd.conf configuration
+  copy:
+    src: "{{ dispatch_config_path_local }}"
+    dest: "{{ dispatch_config_path }}"
+  when: 
+    - not dispatch_config_path_local | trim == ''
 
-- name: Package setup
-  include: setup.yml
-  when: not dispatch_skip_setup
+- name: Deploy sasl2 configuration
+  copy:
+    src: "{{ dispatch_config_sasl2_path_local }}"
+    dest: "{{ dispatch_config_sasl2_path }}"
+  when: 
+    - not dispatch_config_sasl2_path_local | trim == ''
 
-- name: Configuration
-  include: configuration.yml
-  when: not dispatch_skip_configuration
+- name: Deploy sasldb configuration
+  copy:
+    src: "{{ dispatch_config_sasldb_path_local }}"
+    dest: "{{ dispatch_config_sasldb_path }}"
+  when:
+    - not dispatch_config_sasldb_path_local | trim == ''

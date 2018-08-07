@@ -19,47 +19,53 @@
       - name: alain
         image: "rhmessagingqe/sshd-service:centos7"
       - name: roland
-        image: "rhmessagingqe/sshd-service:centos6"
+        image: "rhmessagingqe/sshd-service:centos7"
   roles:
     - role: provision_docker
       provision_docker_inventory: "{{ inventory }}"
 
 - name: Install qpid-dispatch
   hosts: docker_containers
-  vars:
-    dispatch_package_source_epel: true
   roles:
-    - role: ansible-epel
+    - role: epel
 
 - name: Install qpid-dispatch with basic config
   hosts: docker_containers
   vars:
-    dispatch_package_source_epel: true
     dispatch_skip_generate_congfigs: true
-    conf_file_path: 'files/qdrouterd.conf'
+    dispatch_config_path_local: 'files/qdrouterd.conf'
   roles:
     - role: ansible-qpid-dispatch
 
 - name: Install qpid-dispatch with templates generator
   hosts: docker_containers
   vars:
-    dispatch_package_source_epel: true
-    dispatch_package_pip: true
     dispatch_skip_template_generator: false
   roles:
     - role: ansible-qpid-dispatch
 
-- name: Install qpid-dispatch with templates generator and config routers
+- name: Qpid Dispatch config template configuration
   hosts: docker_containers
   vars:
-    dispatch_package_source_epel: true
-    dispatch_package_pip: true
-    dispatch_skip_install: true
-    dispatch_skip_config_default: true
-    dispatch_skip_template_generator: false
+    dispatch_skip_setup: true
+    dispatch_use_template: yes
+    dispatch_skip_generate_template: true
+    dispatch_skip_generate_congfigs: false
+    router_vars: files/vars/routers_vars_old.yml
+  pre_tasks:
+    - include_vars:
+        file: "{{ router_vars }}"
+  roles:
+    - role: ansible-qpid-dispatch
+
+- name: Qpid-dispatch with templates generator and config routers
+  hosts: docker_containers
+  vars:
+    dispatch_skip_setup: true
+    dispatch_use_template: yes
     dispatch_skip_generate_template: false
     dispatch_skip_generate_congfigs: false
-    router_vars: files/vars/routers_vars.yml
+    router_vars: files/vars/routers_vars_old.yml
   pre_tasks:
     - include_vars:
         file: "{{ router_vars }}"

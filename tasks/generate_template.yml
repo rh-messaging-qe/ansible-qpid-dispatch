@@ -12,6 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 ---
+- name: Ensure Qpid Dispatch template generator is installed
+  pip:
+    name: "qdrouter-jinja2"
+    state: latest
+
 - name: Ensure that dir for routers config file exists
   file:
     path: "{{ template_dir }}"
@@ -19,7 +24,7 @@
     mode: 0755
 
 - name: Create template on remote hosts
-  command: "{{ template_generator_use }} -o {{ template_file_path_remote }}"
+  command: "qdrouterjinja2 -o {{ template_file_path_remote }}"
 
 - name: Fetch jinja2 template from remote hosts
   fetch:

@@ -1,0 +1,34 @@
+---
+- name: Deploy qdrouterd.conf based on jinja2 template and varibales
+  template:
+    src: "{{ template_file_path_local }}"
+    dest: "{{ generate_config_file_path }}"
+    owner: "{{ dispatch_user }}"
+    group: "{{ dispatch_group }}"
+    mode: 0644
+  with_items:
+    - "{{ confs }}"
+  when: 
+    - not dispatch_use_default_template
+    - item.machine == inventory_hostname
+
+- name: Deploy qdrouterd.conf based on default jinja2 template and varibales
+  template:
+    src: "{{ template_file_path_default }}"
+    dest: "{{ generate_config_file_path }}"
+    owner: "{{ dispatch_user }}"
+    group: "{{ dispatch_group }}"
+    mode: 0644
+  with_items:
+    - "{{ confs }}"
+  when:
+    - dispatch_use_default_template
+    - item.machine == inventory_hostname
+
+- name: Deploy sasl2 configuration based on jinja2 template and varibales
+  template:
+    src: "templates/qdrouterd.sasl.conf.j2"
+    dest: "{{ dispatch_config_sasl2_path }}"
+    owner: qdrouterd
+    group: qdrouterd
+    mode: 0644
