@@ -1,0 +1,607 @@
+{%- if item.router is defined -%}
+{%- for router in item.router -%}
+router {
+    {%- if router.id is defined %}
+    id: {{ router.id }}
+    {%- endif %}
+    {%- if router.mode is defined %}
+    mode: {{ router.mode }}
+    {%- endif %}
+    {%- if router.area is defined %}
+    area: {{ router.area }}
+    {%- endif %}
+    {%- if router.version is defined %}
+    version: {{ router.version }}
+    {%- endif %}
+    {%- if router.hostName is defined %}
+    hostName: {{ router.hostName }}
+    {%- endif %}
+    {%- if router.helloIntervalSeconds is defined %}
+    helloIntervalSeconds: {{ router.helloIntervalSeconds }}
+    {%- endif %}
+    {%- if router.helloMaxAgeSeconds is defined %}
+    helloMaxAgeSeconds: {{ router.helloMaxAgeSeconds }}
+    {%- endif %}
+    {%- if router.raIntervalSeconds is defined %}
+    raIntervalSeconds: {{ router.raIntervalSeconds }}
+    {%- endif %}
+    {%- if router.raIntervalFluxSeconds is defined %}
+    raIntervalFluxSeconds: {{ router.raIntervalFluxSeconds }}
+    {%- endif %}
+    {%- if router.remoteLsMaxAgeSeconds is defined %}
+    remoteLsMaxAgeSeconds: {{ router.remoteLsMaxAgeSeconds }}
+    {%- endif %}
+    {%- if router.workerThreads is defined %}
+    workerThreads: {{ router.workerThreads }}
+    {%- endif %}
+    {%- if router.debugDumpFile is defined %}
+    debugDumpFile: {{ router.debugDumpFile }}
+    {%- endif %}
+    {%- if router.saslConfigDir is defined %}
+    saslConfigDir: {{ router.saslConfigDir }}
+    {%- endif %}
+    {%- if router.saslConfigName is defined %}
+    saslConfigName: {{ router.saslConfigName }}
+    {%- endif %}
+    {%- if router.allowResumableLinkRoute is defined %}
+    allowResumableLinkRoute: {{ router.allowResumableLinkRoute }}
+    {%- endif %}
+    {%- if router.allowUnsettledMulticast is defined %}
+    allowUnsettledMulticast: {{ router.allowUnsettledMulticast }}
+    {%- endif %}
+    {%- if router.defaultDistribution is defined %}
+    defaultDistribution: {{ router.defaultDistribution }}
+    {%- endif %}
+    {%- if router.addrCount is defined %}
+    addrCount: {{ router.addrCount }}
+    {%- endif %}
+    {%- if router.linkCount is defined %}
+    linkCount: {{ router.linkCount }}
+    {%- endif %}
+    {%- if router.nodeCount is defined %}
+    nodeCount: {{ router.nodeCount }}
+    {%- endif %}
+    {%- if router.linkRouteCount is defined %}
+    linkRouteCount: {{ router.linkRouteCount }}
+    {%- endif %}
+    {%- if router.autoLinkCount is defined %}
+    autoLinkCount: {{ router.autoLinkCount }}
+    {%- endif %}
+    {%- if router.connectionCount is defined %}
+    connectionCount: {{ router.connectionCount }}
+    {%- endif %}
+    {%- if router.presettledDeliveries is defined %}
+    presettledDeliveries: {{ router.presettledDeliveries }}
+    {%- endif %}
+    {%- if router.droppedPresettledDeliveries is defined %}
+    droppedPresettledDeliveries: {{ router.droppedPresettledDeliveries }}
+    {%- endif %}
+    {%- if router.acceptedDeliveries is defined %}
+    acceptedDeliveries: {{ router.acceptedDeliveries }}
+    {%- endif %}
+    {%- if router.rejectedDeliveries is defined %}
+    rejectedDeliveries: {{ router.rejectedDeliveries }}
+    {%- endif %}
+    {%- if router.releasedDeliveries is defined %}
+    releasedDeliveries: {{ router.releasedDeliveries }}
+    {%- endif %}
+    {%- if router.modifiedDeliveries is defined %}
+    modifiedDeliveries: {{ router.modifiedDeliveries }}
+    {%- endif %}
+    {%- if router.deliveriesIngress is defined %}
+    deliveriesIngress: {{ router.deliveriesIngress }}
+    {%- endif %}
+    {%- if router.deliveriesEgress is defined %}
+    deliveriesEgress: {{ router.deliveriesEgress }}
+    {%- endif %}
+    {%- if router.deliveriesTransit is defined %}
+    deliveriesTransit: {{ router.deliveriesTransit }}
+    {%- endif %}
+    {%- if router.deliveriesIngressRouteContainer is defined %}
+    deliveriesIngressRouteContainer: {{ router.deliveriesIngressRouteContainer }}
+    {%- endif %}
+    {%- if router.deliveriesEgressRouteContainer is defined %}
+    deliveriesEgressRouteContainer: {{ router.deliveriesEgressRouteContainer }}
+    {%- endif %}
+}
+{% endfor -%}
+{% endif -%}
+
+{%- if item.sslProfile is defined -%}
+{%- for sslProfile in item.sslProfile -%}
+sslProfile {
+    {%- if sslProfile.ciphers is defined %}
+    ciphers: {{ sslProfile.ciphers }}
+    {%- endif %}
+    {%- if sslProfile.protocols is defined %}
+    protocols: {{ sslProfile.protocols }}
+    {%- endif %}
+    {%- if sslProfile.caCertFile is defined %}
+    caCertFile: {{ sslProfile.caCertFile }}
+    {%- endif %}
+    {%- if sslProfile.certFile is defined %}
+    certFile: {{ sslProfile.certFile }}
+    {%- endif %}
+    {%- if sslProfile.privateKeyFile is defined %}
+    privateKeyFile: {{ sslProfile.privateKeyFile }}
+    {%- endif %}
+    {%- if sslProfile.passwordFile is defined %}
+    passwordFile: {{ sslProfile.passwordFile }}
+    {%- endif %}
+    {%- if sslProfile.password is defined %}
+    password: {{ sslProfile.password }}
+    {%- endif %}
+    {%- if sslProfile.uidFormat is defined %}
+    uidFormat: {{ sslProfile.uidFormat }}
+    {%- endif %}
+    {%- if sslProfile.uidNameMappingFile is defined %}
+    uidNameMappingFile: {{ sslProfile.uidNameMappingFile }}
+    {%- endif %}
+}
+{% endfor -%}
+{% endif -%}
+
+{%- if item.authServicePlugin is defined -%}
+{%- for authServicePlugin in item.authServicePlugin -%}
+authServicePlugin {
+    {%- if authServicePlugin.authService is defined %}
+    authService: {{ authServicePlugin.authService }}
+    {%- endif %}
+    {%- if authServicePlugin.host is defined %}
+    host: {{ authServicePlugin.host }}
+    {%- endif %}
+    {%- if authServicePlugin.port is defined %}
+    port: {{ authServicePlugin.port }}
+    {%- endif %}
+    {%- if authServicePlugin.realm is defined %}
+    realm: {{ authServicePlugin.realm }}
+    {%- endif %}
+    {%- if authServicePlugin.sslProfile is defined %}
+    sslProfile: {{ authServicePlugin.sslProfile }}
+    {%- endif %}
+}
+{% endfor -%}
+{% endif -%}
+
+{%- if item.listener is defined -%}
+{%- for listener in item.listener -%}
+listener {
+    {%- if listener.host is defined %}
+    host: {{ listener.host }}
+    {%- endif %}
+    {%- if listener.port is defined %}
+    port: {{ listener.port }}
+    {%- endif %}
+    {%- if listener.socketAddressFamily is defined %}
+    socketAddressFamily: {{ listener.socketAddressFamily }}
+    {%- endif %}
+    {%- if listener.role is defined %}
+    role: {{ listener.role }}
+    {%- endif %}
+    {%- if listener.cost is defined %}
+    cost: {{ listener.cost }}
+    {%- endif %}
+    {%- if listener.sslProfile is defined %}
+    sslProfile: {{ listener.sslProfile }}
+    {%- endif %}
+    {%- if listener.saslMechanisms is defined %}
+    saslMechanisms: {{ listener.saslMechanisms }}
+    {%- endif %}
+    {%- if listener.authenticatePeer is defined %}
+    authenticatePeer: {{ listener.authenticatePeer }}
+    {%- endif %}
+    {%- if listener.saslPlugin is defined %}
+    saslPlugin: {{ listener.saslPlugin }}
+    {%- endif %}
+    {%- if listener.requireEncryption is defined %}
+    requireEncryption: {{ listener.requireEncryption }}
+    {%- endif %}
+    {%- if listener.requireSsl is defined %}
+    requireSsl: {{ listener.requireSsl }}
+    {%- endif %}
+    {%- if listener.trustedCertsFile is defined %}
+    trustedCertsFile: {{ listener.trustedCertsFile }}
+    {%- endif %}
+    {%- if listener.maxFrameSize is defined %}
+    maxFrameSize: {{ listener.maxFrameSize }}
+    {%- endif %}
+    {%- if listener.maxSessions is defined %}
+    maxSessions: {{ listener.maxSessions }}
+    {%- endif %}
+    {%- if listener.maxSessionFrames is defined %}
+    maxSessionFrames: {{ listener.maxSessionFrames }}
+    {%- endif %}
+    {%- if listener.idleTimeoutSeconds is defined %}
+    idleTimeoutSeconds: {{ listener.idleTimeoutSeconds }}
+    {%- endif %}
+    {%- if listener.initialHandshakeTimeoutSeconds is defined %}
+    initialHandshakeTimeoutSeconds: {{ listener.initialHandshakeTimeoutSeconds }}
+    {%- endif %}
+    {%- if listener.stripAnnotations is defined %}
+    stripAnnotations: {{ listener.stripAnnotations }}
+    {%- endif %}
+    {%- if listener.linkCapacity is defined %}
+    linkCapacity: {{ listener.linkCapacity }}
+    {%- endif %}
+    {%- if listener.multiTenant is defined %}
+    multiTenant: {{ listener.multiTenant }}
+    {%- endif %}
+    {%- if listener.failoverUrls is defined %}
+    failoverUrls: {{ listener.failoverUrls }}
+    {%- endif %}
+    {%- if listener.http is defined %}
+    http: {{ listener.http }}
+    {%- endif %}
+    {%- if listener.httpRootDir is defined %}
+    httpRootDir: {{ listener.httpRootDir }}
+    {%- endif %}
+    {%- if listener.messageLoggingComponents is defined %}
+    messageLoggingComponents: {{ listener.messageLoggingComponents }}
+    {%- endif %}
+}
+{% endfor -%}
+{% endif -%}
+
+{%- if item.connector is defined -%}
+{%- for connector in item.connector -%}
+connector {
+    {%- if connector.name is defined %}
+    name: {{ connector.name }}
+    {% endif -%}
+    {%- if hostvars is defined -%}
+    {%- if hostvars[connector.host] is defined %}
+    host: {{ hostvars[connector.host]['ansible_host'] | default(hostvars[connector.host]['docker_ip']) }}
+    {% endif -%}
+    {%- endif %}
+    {%- if connector.port is defined %}
+    port: {{ connector.port }}
+    {%- endif %}
+    {%- if connector.protocolFamily is defined %}
+    protocolFamily: {{ connector.protocolFamily }}
+    {%- endif %}
+    {%- if connector.role is defined %}
+    role: {{ connector.role }}
+    {%- endif %}
+    {%- if connector.cost is defined %}
+    cost: {{ connector.cost }}
+    {%- endif %}
+    {%- if connector.sslProfile is defined %}
+    sslProfile: {{ connector.sslProfile }}
+    {%- endif %}
+    {%- if connector.saslMechanisms is defined %}
+    saslMechanisms: {{ connector.saslMechanisms }}
+    {%- endif %}
+    {%- if connector.allowRedirect is defined %}
+    allowRedirect: {{ connector.allowRedirect }}
+    {%- endif %}
+    {%- if connector.maxFrameSize is defined %}
+    maxFrameSize: {{ connector.maxFrameSize }}
+    {%- endif %}
+    {%- if connector.maxSessions is defined %}
+    maxSessions: {{ connector.maxSessions }}
+    {%- endif %}
+    {%- if connector.maxSessionFrames is defined %}
+    maxSessionFrames: {{ connector.maxSessionFrames }}
+    {%- endif %}
+    {%- if connector.idleTimeoutSeconds is defined %}
+    idleTimeoutSeconds: {{ connector.idleTimeoutSeconds }}
+    {%- endif %}
+    {%- if connector.stripAnnotations is defined %}
+    stripAnnotations: {{ connector.stripAnnotations }}
+    {%- endif %}
+    {%- if connector.linkCapacity is defined %}
+    linkCapacity: {{ connector.linkCapacity }}
+    {%- endif %}
+    {%- if connector.verifyHostname is defined %}
+    verifyHostname: {{ connector.verifyHostname }}
+    {%- endif %}
+    {%- if connector.saslUsername is defined %}
+    saslUsername: {{ connector.saslUsername }}
+    {%- endif %}
+    {%- if connector.saslPassword is defined %}
+    saslPassword: {{ connector.saslPassword }}
+    {%- endif %}
+    {%- if connector.messageLoggingComponents is defined %}
+    messageLoggingComponents: {{ connector.messageLoggingComponents }}
+    {%- endif %}
+    {%- if connector.failoverUrls is defined %}
+    failoverUrls: {{ connector.failoverUrls }}
+    {%- endif %}
+}
+{% endfor -%}
+{% endif -%}
+
+{%- if item.log is defined -%}
+{%- for log in item.log -%}
+log {
+    {%- if log.module is defined %}
+    module: {{ log.module }}
+    {%- endif %}
+    {%- if log.enable is defined %}
+    enable: {{ log.enable }}
+    {%- endif %}
+    {%- if log.includeTimestamp is defined %}
+    includeTimestamp: {{ log.includeTimestamp }}
+    {%- endif %}
+    {%- if log.includeSource is defined %}
+    includeSource: {{ log.includeSource }}
+    {%- endif %}
+    {%- if log.outputFile is defined %}
+    outputFile: {{ log.outputFile }}
+    {%- endif %}
+}
+{% endfor -%}
+{% endif -%}
+
+{%- if item.address is defined -%}
+{%- for address in item.address -%}
+address {
+    {%- if address.prefix is defined %}
+    prefix: {{ address.prefix }}
+    {%- endif %}
+    {%- if address.pattern is defined %}
+    pattern: {{ address.pattern }}
+    {%- endif %}
+    {%- if address.distribution is defined %}
+    distribution: {{ address.distribution }}
+    {%- endif %}
+    {%- if address.waypoint is defined %}
+    waypoint: {{ address.waypoint }}
+    {%- endif %}
+    {%- if address.ingressPhase is defined %}
+    ingressPhase: {{ address.ingressPhase }}
+    {%- endif %}
+    {%- if address.egressPhase is defined %}
+    egressPhase: {{ address.egressPhase }}
+    {%- endif %}
+}
+{% endfor -%}
+{% endif -%}
+
+{%- if item.linkRoute is defined -%}
+{%- for linkRoute in item.linkRoute -%}
+linkRoute {
+    {%- if linkRoute.prefix is defined %}
+    prefix: {{ linkRoute.prefix }}
+    {%- endif %}
+    {%- if linkRoute.pattern is defined %}
+    pattern: {{ linkRoute.pattern }}
+    {%- endif %}
+    {%- if linkRoute.containerId is defined %}
+    containerId: {{ linkRoute.containerId }}
+    {%- endif %}
+    {%- if linkRoute.connection is defined %}
+    connection: {{ linkRoute.connection }}
+    {%- endif %}
+    {%- if linkRoute.distribution is defined %}
+    distribution: {{ linkRoute.distribution }}
+    {%- endif %}
+    {%- if linkRoute.direction is defined %}
+    direction: {{ linkRoute.direction }}
+    {%- endif %}
+    {%- if linkRoute.operStatus is defined %}
+    operStatus: {{ linkRoute.operStatus }}
+    {%- endif %}
+}
+{% endfor -%}
+{% endif -%}
+
+{%- if item.autoLink is defined -%}
+{%- for autoLink in item.autoLink -%}
+autoLink {
+    {%- if autoLink.addr is defined %}
+    addr: {{ autoLink.addr }}
+    {%- endif %}
+    {%- if autoLink.direction is defined %}
+    direction: {{ autoLink.direction }}
+    {%- endif %}
+    {%- if autoLink.phase is defined %}
+    phase: {{ autoLink.phase }}
+    {%- endif %}
+    {%- if autoLink.containerId is defined %}
+    containerId: {{ autoLink.containerId }}
+    {%- endif %}
+    {%- if autoLink.connection is defined %}
+    connection: {{ autoLink.connection }}
+    {%- endif %}
+    {%- if autoLink.externalAddr is defined %}
+    externalAddr: {{ autoLink.externalAddr }}
+    {%- endif %}
+    {%- if autoLink.linkRef is defined %}
+    linkRef: {{ autoLink.linkRef }}
+    {%- endif %}
+    {%- if autoLink.operStatus is defined %}
+    operStatus: {{ autoLink.operStatus }}
+    {%- endif %}
+    {%- if autoLink.lastError is defined %}
+    lastError: {{ autoLink.lastError }}
+    {%- endif %}
+}
+{% endfor -%}
+{% endif -%}
+
+{%- if item.exchange is defined -%}
+{%- for exchange in item.exchange -%}
+exchange {
+    {%- if exchange.address is defined %}
+    address: {{ exchange.address }}
+    {%- endif %}
+    {%- if exchange.phase is defined %}
+    phase: {{ exchange.phase }}
+    {%- endif %}
+    {%- if exchange.alternateAddress is defined %}
+    alternateAddress: {{ exchange.alternateAddress }}
+    {%- endif %}
+    {%- if exchange.alternatePhase is defined %}
+    alternatePhase: {{ exchange.alternatePhase }}
+    {%- endif %}
+    {%- if exchange.matchMethod is defined %}
+    matchMethod: {{ exchange.matchMethod }}
+    {%- endif %}
+    {%- if exchange.bindingCount is defined %}
+    bindingCount: {{ exchange.bindingCount }}
+    {%- endif %}
+    {%- if exchange.receivedCount is defined %}
+    receivedCount: {{ exchange.receivedCount }}
+    {%- endif %}
+    {%- if exchange.droppedCount is defined %}
+    droppedCount: {{ exchange.droppedCount }}
+    {%- endif %}
+    {%- if exchange.forwardedCount is defined %}
+    forwardedCount: {{ exchange.forwardedCount }}
+    {%- endif %}
+    {%- if exchange.divertedCount is defined %}
+    divertedCount: {{ exchange.divertedCount }}
+    {%- endif %}
+}
+{% endfor -%}
+{% endif -%}
+
+{%- if item.binding is defined -%}
+{%- for binding in item.binding -%}
+binding {
+    {%- if binding.exchangeName is defined %}
+    exchangeName: {{ binding.exchangeName }}
+    {%- endif %}
+    {%- if binding.bindingKey is defined %}
+    bindingKey: {{ binding.bindingKey }}
+    {%- endif %}
+    {%- if binding.nextHopAddress is defined %}
+    nextHopAddress: {{ binding.nextHopAddress }}
+    {%- endif %}
+    {%- if binding.nextHopPhase is defined %}
+    nextHopPhase: {{ binding.nextHopPhase }}
+    {%- endif %}
+    {%- if binding.matchedCount is defined %}
+    matchedCount: {{ binding.matchedCount }}
+    {%- endif %}
+}
+{% endfor -%}
+{% endif -%}
+
+{%- if item.console is defined -%}
+{%- for console in item.console -%}
+console {
+    {%- if console.listener is defined %}
+    listener: {{ console.listener }}
+    {%- endif %}
+    {%- if console.wsport is defined %}
+    wsport: {{ console.wsport }}
+    {%- endif %}
+    {%- if console.proxy is defined %}
+    proxy: {{ console.proxy }}
+    {%- endif %}
+    {%- if console.home is defined %}
+    home: {{ console.home }}
+    {%- endif %}
+    {%- if console.args is defined %}
+    args: {{ console.args }}
+    {%- endif %}
+}
+{% endfor -%}
+{% endif -%}
+
+{%- if item.policy is defined -%}
+{%- for policy in item.policy -%}
+policy {
+    {%- if policy.maxConnections is defined %}
+    maxConnections: {{ policy.maxConnections }}
+    {%- endif %}
+    {%- if policy.enableVhostPolicy is defined %}
+    enableVhostPolicy: {{ policy.enableVhostPolicy }}
+    {%- endif %}
+    {%- if policy.enableVhostNamePatterns is defined %}
+    enableVhostNamePatterns: {{ policy.enableVhostNamePatterns }}
+    {%- endif %}
+    {%- if policy.policyDir is defined %}
+    policyDir: {{ policy.policyDir }}
+    {%- endif %}
+    {%- if policy.defaultVhost is defined %}
+    defaultVhost: {{ policy.defaultVhost }}
+    {%- endif %}
+    {%- if policy.connectionsProcessed is defined %}
+    connectionsProcessed: {{ policy.connectionsProcessed }}
+    {%- endif %}
+    {%- if policy.connectionsDenied is defined %}
+    connectionsDenied: {{ policy.connectionsDenied }}
+    {%- endif %}
+    {%- if policy.connectionsCurrent is defined %}
+    connectionsCurrent: {{ policy.connectionsCurrent }}
+    {%- endif %}
+}
+{% endfor -%}
+{% endif -%}
+
+{%- if item.vhost is defined -%}
+{%- for vhost in item.vhost -%}
+vhost {
+    {%- if vhost.hostname is defined %}
+    hostname: {{ vhost.hostname }}
+    {%- endif %}
+    {%- if vhost.maxConnections is defined %}
+    maxConnections: {{ vhost.maxConnections }}
+    {%- endif %}
+    {%- if vhost.maxConnectionsPerUser is defined %}
+    maxConnectionsPerUser: {{ vhost.maxConnectionsPerUser }}
+    {%- endif %}
+    {%- if vhost.maxConnectionsPerHost is defined %}
+    maxConnectionsPerHost: {{ vhost.maxConnectionsPerHost }}
+    {%- endif %}
+    {%- if vhost.allowUnknownUser is defined %}
+    allowUnknownUser: {{ vhost.allowUnknownUser }}
+    {%- endif %}
+    {%- if vhost.groups is defined %}
+    groups: {{ vhost.groups }}
+    {%- endif %}
+}
+{% endfor -%}
+{% endif -%}
+
+{%- if item.vhostUserGroupSettings is defined -%}
+{%- for vhostUserGroupSettings in item.vhostUserGroupSettings -%}
+vhostUserGroupSettings {
+    {%- if vhostUserGroupSettings.users is defined %}
+    users: {{ vhostUserGroupSettings.users }}
+    {%- endif %}
+    {%- if vhostUserGroupSettings.remoteHosts is defined %}
+    remoteHosts: {{ vhostUserGroupSettings.remoteHosts }}
+    {%- endif %}
+    {%- if vhostUserGroupSettings.maxFrameSize is defined %}
+    maxFrameSize: {{ vhostUserGroupSettings.maxFrameSize }}
+    {%- endif %}
+    {%- if vhostUserGroupSettings.maxSessionWindow is defined %}
+    maxSessionWindow: {{ vhostUserGroupSettings.maxSessionWindow }}
+    {%- endif %}
+    {%- if vhostUserGroupSettings.maxSessions is defined %}
+    maxSessions: {{ vhostUserGroupSettings.maxSessions }}
+    {%- endif %}
+    {%- if vhostUserGroupSettings.maxSenders is defined %}
+    maxSenders: {{ vhostUserGroupSettings.maxSenders }}
+    {%- endif %}
+    {%- if vhostUserGroupSettings.maxReceivers is defined %}
+    maxReceivers: {{ vhostUserGroupSettings.maxReceivers }}
+    {%- endif %}
+    {%- if vhostUserGroupSettings.allowDynamicSource is defined %}
+    allowDynamicSource: {{ vhostUserGroupSettings.allowDynamicSource }}
+    {%- endif %}
+    {%- if vhostUserGroupSettings.allowAnonymousSender is defined %}
+    allowAnonymousSender: {{ vhostUserGroupSettings.allowAnonymousSender }}
+    {%- endif %}
+    {%- if vhostUserGroupSettings.allowUserIdProxy is defined %}
+    allowUserIdProxy: {{ vhostUserGroupSettings.allowUserIdProxy }}
+    {%- endif %}
+    {%- if vhostUserGroupSettings.sources is defined %}
+    sources: {{ vhostUserGroupSettings.sources }}
+    {%- endif %}
+    {%- if vhostUserGroupSettings.targets is defined %}
+    targets: {{ vhostUserGroupSettings.targets }}
+    {%- endif %}
+    {%- if vhostUserGroupSettings.sourcePattern is defined %}
+    sourcePattern: {{ vhostUserGroupSettings.sourcePattern }}
+    {%- endif %}
+    {%- if vhostUserGroupSettings.targetPattern is defined %}
+    targetPattern: {{ vhostUserGroupSettings.targetPattern }}
+    {%- endif %}
+}
+{% endfor -%}
+{% endif -%}
