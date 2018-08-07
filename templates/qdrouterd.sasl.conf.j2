@@ -1,0 +1,5 @@
+pwcheck_method: {{ dispatch_sasl_pwcheck_method }} # default: auxprop
+auxprop_plugin: {{ dispatch_sasl_auxprop_plugin }} # default: sasldb
+sasldb_path: {{ dispatch_sasl_sasldb_path }} # default: /var/lib/qdrouterd/qdrouterd.sasldb
+mech_list: {{ dispatch_sasl_mech_list | join(' ') }} # default: ANONYMOUS DIGEST-MD5 EXTERNAL PLAIN
+sql_select: {{ dispatch_sasl_sql_select }} # default: dummy select
