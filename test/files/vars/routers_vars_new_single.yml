@@ -1,0 +1,16 @@
+---
+qdrouterd-conf:
+  router:
+  - id: roland
+    mode: standalone
+
+  listener:
+  - host: 0.0.0.0
+    role: inter-router
+    port: 6000
+
+  - host: 0.0.0.0
+    authenticatePeer: 'no'
+    role: normal
+    port: 5000
+    saslMechanisms: ANONYMOUS

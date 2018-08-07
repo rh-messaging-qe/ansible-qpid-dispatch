@@ -1,0 +1,60 @@
+---
+confs:
+- machine: roland
+  router:
+  - id: roland
+    mode: standalone
+  listener:
+  - host: 0.0.0.0
+    role: inter-router
+    port: 6000
+  - host: 0.0.0.0
+    authenticatePeer: 'no'
+    role: normal
+    port: 5000
+    saslMechanisms: ANONYMOUS
+  connector:
+  - host: alain
+    role: inter-router
+    port: 6001
+  - host: alain
+    role: route-container
+    port: 6002
+  linkRoute:
+  - prefix: addr_anycast
+    connection: alain
+    dir: in
+  - prefix: addr_anycast
+    connection: alain
+    dir: out
+  address:
+  - prefix: closest
+    distribution: closest
+  - prefix: multicast
+    distribution: multicast
+  - prefix: unicast
+    distribution: closest
+- machine: alain
+  router:
+  - id: alain
+    mode: standalone
+  listener:
+  - host: 0.0.0.0
+    role: inter-router
+    port: 6001
+  - host: 0.0.0.0
+    authenticatePeer: 'no'
+    role: normal
+    port: 5001
+    saslMechanisms: ANONYMOUS
+  connector:
+  - host: roland
+    role: inter-router
+    port: 6000
+  address:
+  - prefix: closest
+    distribution: closest
+  - prefix: multicast
+    distribution: multicast
+  - prefix: unicast
+    distribution: closest
