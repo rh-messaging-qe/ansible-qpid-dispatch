@@ -27,9 +27,9 @@
 - name: Ensure Qpid Dispatch packages are installed (from default)
   when: dispatch_package_source_epel is defined and dispatch_package_source_epel == false
   yum:
-    name: "{{ item }}"
+    name: "{{ dispatch_packages }}"
     state: latest
-  with_items: "{{ dispatch_packages }}"
+    enablerepo: "{{ dispatch_rhel_default_repositories }}"
   notify:
     - qdrouterd is enabled
     - qdrouterd is started

@@ -5,6 +5,7 @@
 #  - qpid-dispatch-docs
 dispatch_package_source_epel: false
 dispatch_package_pip: false
+dispatch_rhel_default_repositories: ''
 dispatch_skip_install: false
 dispatch_skip_config_default: false
 dispatch_skip_template_generator: true
